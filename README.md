@@ -26,7 +26,22 @@ Then, a polynomial is obtained from the current trajectory points returned from 
 
 ### Timestep Length and Elapsed Duration (N & dt)
 
-I chose `N = 10` and `dt = 0.1`. 
+At first, I tried `N = 50` and `dt = 10`. In this case, the vehicle model didn't show too much movement, even generating a future trajectory backwards! 
+
+![alt text](images/N_50_dt_10.png "Backwards")
+
+Then, I tries `N = 20` and `dt = 1`. This mde the vehicle to go very slowly (even when the reference velocity was set to 70). The vehicle completely stopped before the first curve.
+
+I chose for the final parameters `N = 10` and `dt = 0.1`. This enabled the vehicle to complete a lap at 70 MPH. To do this, was also required to assign weights to the costs of the CTE, EPSI and the actuators.
+
+```c++
+static const double CTE_COST_WEIGHT                 = 20000;
+static const double EPSI_COST_WEIGHT                = 20000;
+static const double SPEED_COST_WEIGHT               = 100;
+static const double ACTUATOR_COST_WEIGHT            = 1;
+static const double STEER_CHANGE_COST_WEIGHT        = 200;
+static const double ACCELERATION_CHANGE_COST_WEIGHT = 200;
+```
 
 ### Polynomial Fitting and MPC Preprocessing
 
