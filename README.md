@@ -46,6 +46,13 @@ const double predCte     = cte  + v * sin(epsi) * LATENCY_SECONDS;
 const double predEpsi    = epsi + speedFactor;
 ```
 
+### Video
+
+A video of the final run can be found here:
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=Ai622KC8wvc" target="_blank"><img src="http://img.youtube.com/vi/Ai622KC8wvc/0.jpg" 
+alt="video" width="240" height="180" border="10" /></a>
+
 ## Dependencies
 
 * cmake >= 3.5
